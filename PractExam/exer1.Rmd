@@ -9,18 +9,23 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 
+summary (warpbreaks)
+data("warpbreaks")
+warpbreaks 
 
-
-write.csv(file="warpbreaks")
+write.csv(warpbreaks,"warpbreaks.csv")
 
 #1 
-warpbreaks
-breaks <- sapply(warpbreaks, function (x) paste(class (x), collapse = "/"))
+str(warpbreaks)
+typeof(warpbreaks$breaks)
+  typeof(warpbreaks$wool)
+  typeof(warpbreaks$tension)
 
-breaks
 
+#2. There are 54 observation of 3 variables
 
-#2. There are 54 observation of 3 variables.
+breaks <- nrow(warpbreaks)
+ breaks
 #3. 
 warpbreaks$wool <-as.integer(warpbreaks$breaks)
 warpbreaks$tension <-as.integer(warpbreaks$breaks)
@@ -34,10 +39,68 @@ warpbreaks$tension <-as.integer(warpbreaks$breaks)
 B.
 
 
-exampleFile
-library(readr)
-exampleFile <- read_csv("exampleFile.txt")
-View(exampleFile)
+file <- file("exampleFile.txt")
+  read <- readLines(file)
+  read
+  
+#2.
+com <- read[grepl("^//",read)]
+com
+
+vect <- read[!grepl("^//", read)]
+vect
+
+
+#3.
+
+subsetCom <-com[1]
+date <- gsub("//Survey data. Created:","", subsetCom)
+date
+
+cat ("It was Created,",date)
+
+
+#4a.
+
+
+vec_Split <- (strsplit(vect,";"))
+vec_Split
+
+
+#4b.
+
+
+max_vec <-max(length(vec_Split))
+max_vec
+
+appendRow <- lapply(vec_Split, function(x) c(x,rep(NA, max_vec - length(x))))
+appendRow
+
+
+#4c.
+
+
+unlistdata <- unlist(appendRow)
+unlistdata
+
+#4d.
+
+dat_matrix <- matrix(unlistdata, ncol=4, nrow = 3,
+                     dimnames = list(c("row1","row2","row3")))
+dat_matrix
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
