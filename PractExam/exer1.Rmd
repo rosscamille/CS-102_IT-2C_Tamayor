@@ -1,0 +1,46 @@
+---
+title: "exer1"
+output: html_document
+date: "2024-02-18"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+
+write.csv(file="warpbreaks")
+
+#1 
+warpbreaks
+breaks <- sapply(warpbreaks, function (x) paste(class (x), collapse = "/"))
+
+breaks
+
+
+#2. There are 54 observation of 3 variables.
+#3. 
+warpbreaks$wool <-as.integer(warpbreaks$breaks)
+warpbreaks$tension <-as.integer(warpbreaks$breaks)
+
+#4. warpbreaksDataType <- sapply(warpbreaks,function(x) is.nuemeric(x) | is.integer(x))
+#Error: unexpected ',' in "warpbreaskDataType <- sapplywarpbreaks,"
+
+
+
+
+B.
+
+
+exampleFile
+library(readr)
+exampleFile <- read_csv("exampleFile.txt")
+View(exampleFile)
+
+
+
+
+
+
